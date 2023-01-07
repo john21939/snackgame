@@ -1,5 +1,5 @@
-/*Author: Johnny Phan*/
-/*11 grade*/
+#Author: Johnny Phan
+#11 grade
 
 import turtle
 import random
@@ -90,7 +90,6 @@ while True:
         time.sleep(1)
         head.goto(0,0)
         head.direction = "stop"
-
         for segment in segments:
             segment.goto(1000,1000)
 
@@ -101,14 +100,22 @@ while True:
         pen.write("score:{}  High Score:{}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
         delay = 0.1
 
-
+    l = ["red", "blue", "purple", "navy", "white", "maroon", "black"]
     if head.distance(food) < 20:
+        b = random.choices(l, weights=(30, 15, 20, 10, 5, 10, 10,), k=1)
+        food.color(b)
+
+        if b == ['red']:
+            score+=20
+        else:
+            pass
+
+
         x = random.randint(-290,290)
         y = random.randint(-290,290)
         food.goto(x,y)
-        l = ["gray", "blue", 'purple']
-        b = random.choice(l)
-        food.color(b)
+
+
 
 
         new_segment = turtle.Turtle()
