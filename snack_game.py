@@ -20,6 +20,14 @@ pen.hideturtle()
 pen.goto(0,260)
 pen.write("score:0   High Score:0", align = "center",font=("Courier",24,"normal"))
 
+def add_segment():
+    new_segment = turtle.Turtle()
+    new_segment.speed(0)
+    new_segment.shape("square")
+    new_segment.color("grey")
+    new_segment.penup()
+    segments.append(new_segment)
+
 def move():
     if head.direction =="up":
         y = head.ycor()
@@ -72,6 +80,13 @@ food.shape("circle")
 food.color("red")
 food.penup()
 food.goto(100,100)
+#food2
+food2 = turtle.Turtle()
+food2.speed()
+food2.shape("circle")
+food2.color("blue")
+food2.penup()
+food2.goto(0,100)
 
 
 #keyboard bindings
@@ -101,23 +116,25 @@ while True:
         pen.write("score:{}  High Score:{}".format(score, high_score), align="center", font=("Courier", 24, "normal"))
         delay = 0.1
 
-    l = ["red", "blue", "purple", "navy", "white", "maroon", "black"]
-    if head.distance(food) < 20:
-        b = random.choices(l, weights=(30, 15, 20, 10, 5, 10, 10,), k=1)
-        food.color(b)
+    if head.distance(food2) <20:
+        x = random.randint(-290, 290)
+        y = random.randint(-290, 290)
+        food2.goto(x, y)
+        add_segment()
+        delay -=.005
 
-        if b == ['red']:
-            score+=20
-        else:
-            pass
+
+
+
+    if head.distance(food) < 20:
+
+
+
 
 
         x = random.randint(-290,290)
         y = random.randint(-290,290)
         food.goto(x,y)
-
-
-
 
         new_segment = turtle.Turtle()
         new_segment.speed(0)
@@ -125,13 +142,12 @@ while True:
         new_segment.color("grey")
         new_segment.penup()
         segments.append(new_segment)
-        delay -=.001
+        delay -= .001
 
         score+=10
 
         if score> high_score:
             high_score =score
-
         pen.clear()
         pen.write("score:{}  High Score:{}".format(score, high_score),align="center",font=("Courier",24,"normal"))
 
