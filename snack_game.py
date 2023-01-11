@@ -1,7 +1,5 @@
 #Author: Johnny Phan
 #11 grade
-#brtyrybry
-#ddddd
 
 import turtle
 import random
